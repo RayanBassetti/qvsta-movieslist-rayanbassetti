@@ -1,5 +1,19 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# What does it do : 
+
+- Based on TheMovieDb(https://www.themoviedb.com), this React app displays movies according 
+- to specific terms indicated by the user.
+
+- WORK IN PROGRESS.
+
+#What is used : 
+
+- HTML
+- SASS
+- Jquery 
+- AJAX
+
 ## Available Scripts
 
 In the project directory, you can run:
