@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 export const API_KEY = `${process.env.REACT_APP_API_KEY}`; // storing the API KEY in an env file to secure it on GitHub
 export const apiMovieSearch = "https://api.themoviedb.org/3/search/movie?api_key=" // example of a specific request to the API, a call on search for movies of the day
-export const allIn = apiMovieSearch + API_KEY; //
+export const allIn = apiMovieSearch + API_KEY; // adds the api key to the api url
 
 class Movies extends Component {
     constructor() {
@@ -15,16 +15,16 @@ class Movies extends Component {
 
         }
         
-        this.HandleChange = this.HandleChange.bind(this)
+        this.HandleChange = this.HandleChange.bind(this) // must be bind, or else we can't change the state inside the HandleChange function
     }
 
 
     HandleChange(event) { // function that will change the parameter of the query according to what the user will input
-        console.log(event.target.value)
+        console.log(event.target.value) // quick test to display what's being typed in the input inside the console
         this.setState({
-            research: event.target.value
+            research: event.target.value // change the state to the input
         })
-        this.launchSearch(this.state.research)
+        this.launchSearch(this.state.research) // apply to the function the state
     }
 
     launchSearch(searchedMovie) {
