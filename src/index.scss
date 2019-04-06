@@ -13,6 +13,11 @@ code {
     monospace;
 }
 
+a {
+  text-decoration: none;
+  color : red;
+}
+
 #root {
 
   .Header {
@@ -30,19 +35,44 @@ code {
     }
   }
 
-  .singleMovie {
-    margin-left : 5%;
-    margin-right : 5%;
-    margin-top : 3%;
-    margin-bottom : 3%;
-    padding-left : 10%;
-    padding-right : 10%;
-    padding-bottom : 1%;
-    text-align: center;
-    border-radius: 22px 22px 22px 22px;
-    -moz-border-radius: 22px 22px 22px 22px;
-    -webkit-border-radius: 22px 22px 22px 22px;
-    border: 1px double #000000;
-    background-color : #cfcfcf;
+  .allMovies {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .singleMovie {
+      width : 200px;
+      height : auto;
+      margin-top : 3%;
+      margin-bottom : 3%;
+      margin-left : 5%;
+      margin-right : 5%;
+      -webkit-box-shadow: 1px 18px 36px -6px rgba(0,0,0,0.75);
+      -moz-box-shadow: 1px 18px 36px -6px rgba(0,0,0,0.75);
+      box-shadow: 1px 18px 36px -6px rgba(0,0,0,0.75);
+      
+      .singleMovieText {
+        padding-bottom : 1%;
+        padding-left : 2%;
+
+        .singleMovieTextTitle {
+          font-weight: bold;
+          color : grey;
+          margin : 0;
+          font-size-adjust: inherit;
+          font-size : 0.95em;
+        }
+
+
+        .span {
+          font-size : 0.9em;
+          
+        }
+      }
+    }
+
   }
+
+
 }
