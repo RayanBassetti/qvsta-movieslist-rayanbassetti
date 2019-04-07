@@ -1,18 +1,14 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Header extends Component {
+function Header() {
 
-    render() {
         return(
             <div className="Header">
-                <ul>
-                    <li><a href="www.google.fr">Popular</a></li>
-                    <li><a href="https://github.com/RayanBassetti">Trending</a></li>
-                    <li><a href="https://github.com/RayanBassetti">Search</a></li>
-                </ul>
+                <img alt="logo" src=""></img>
+                <h4>TheMovieDB - A React App</h4>
             </div>
         )
-    }
+    
 }
 
 export default Header
