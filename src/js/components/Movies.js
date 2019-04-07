@@ -22,7 +22,7 @@ class Movies extends Component {
     HandleChange(event) { // function that will change the parameter of the query according to what the user will input
         console.log(event.target.value) // quick test to display what's being typed in the input inside the console
         this.setState({
-            research: event.target.value // change the state to the input
+            research: event.target.value // change the state to the input of the user
         })
         this.launchSearch(this.state.research) // apply to the function the state
     }
@@ -42,7 +42,7 @@ class Movies extends Component {
                 console.log("Successfuly fetched data")
                 const results = trendingResults.results // reducing the parameter to a shorter one
                 const moviesList = [] // creating an empty array where to push the data to
-                results.forEach(movie => { // for each movie, assign to a const the component SingleMovie, taking the movie data as a parameter to call
+                results.forEach(movie => { // for each index, assign to a const the component SingleMovie, taking the movie data as a parameter to call
                     const singleMovie = <SingleMovie key={movie.id} movie={movie} />
                     moviesList.push(singleMovie) // push the data in the array created before
                 });
