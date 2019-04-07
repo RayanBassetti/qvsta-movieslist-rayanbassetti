@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # What does it do : 
 
-- Based on TheMovieDb(https://www.themoviedb.com), this React app displays movies according 
+- Based on TheMovieDb(https://www.themoviedb.org/), this React app displays movies according 
 - to specific terms indicated by the user.
 
 - WORK IN PROGRESS.
