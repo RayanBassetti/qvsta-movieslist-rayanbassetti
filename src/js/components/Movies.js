@@ -4,6 +4,7 @@ import MoviesContainer from './MoviesContainer.js'
 import MovieGenre from './MovieGenre.js';
 import $ from 'jquery';
 
+
 const API_KEY = `${process.env.REACT_APP_API_KEY}`; // storing the API KEY in an env file to secure it on GitHub
 
 const apiMovieSearch = "https://api.themoviedb.org/3/search/movie?&api_key=" // example of a specific request to the API, a call on search for movies of the day
@@ -25,11 +26,12 @@ class Movies extends Component {
         }
         
         this.HandleMovieSearch = this.HandleMovieSearch.bind(this) // must be bind, or else we can't change the state inside the function
+        this.launchSearch = this.launchSearch.bind(this)
         // this.HandleMovieGenre = this.HandleMovieGenre.bind(this)
         // this.showGenre = this.showGenre.bind(this)
     }
 
-    // Handlers for the users input 
+// HANDLERS FOR THE USER'S INPUT
     HandleMovieSearch(event) { // function that will change the parameter of the query according to what the user will input
         console.log(event.target.value) // quick test to display what's being typed in the input inside the console
         const {name, value} = event.target // storing the name and the value indicated in the render field
@@ -39,24 +41,14 @@ class Movies extends Component {
         this.launchSearch(value)
     }
 
-    // HandleMovieGenre(event) {
-    //     console.log(event.target.value)
-    //     this.setState({
-    //         chosenGenre: event.target.value
-    //     })
-
-    //     this.showGenre(this.state.chosenGenre)
-    // }
-
-
-    // Functions to access the data
-    launchSearch(researchmovie, researchyear) {
+// FUNCTIONS TO ACCESS THE API AND INTERACT WiTH IT 
+    launchSearch(value) {
         console.log("Performing research")
-        const movieSearch = { // store all the querys I'm going to make in an object
-            "&primary_release_year=": researchyear, // error for now : the parameter stays undefined in the year query, and replaces the name query when something is typed 
-            "&query=": researchmovie,
+        const movieSearch = { // store all the querys I'm going to make inside an object
+            "&primary_release_year=": value, // error for now : the parameter stays undefined in the year query, and replaces the name query when something is typed 
+            "&query=": value,
         }
-        // console.log(researchmovie)
+        // interact with the api...
         $.ajax({
             url: fullMovieSearch,
             data : JSON.stringify(movieSearch), //transform the querys into strings, added to the URL
@@ -107,6 +99,9 @@ class Movies extends Component {
     //         }
     //     })
     // }
+
+    
+
 
     render() {
         
