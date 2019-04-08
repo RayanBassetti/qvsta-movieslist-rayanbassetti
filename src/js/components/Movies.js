@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SingleMovie from './SingleMovie.js';
+import MoviesContainer from './MoviesContainer.js'
 import MovieGenre from './MovieGenre.js';
 import $ from 'jquery';
 
@@ -26,7 +27,6 @@ class Movies extends Component {
         this.HandleMovieSearch = this.HandleMovieSearch.bind(this) // must be bind, or else we can't change the state inside the function
         // this.HandleMovieGenre = this.HandleMovieGenre.bind(this)
         // this.showGenre = this.showGenre.bind(this)
-        this.consoleTest = this.consoleTest.bind(this)
     }
 
     // Handlers for the users input 
@@ -53,7 +53,7 @@ class Movies extends Component {
     launchSearch(researchmovie, researchyear) {
         console.log("Performing research")
         const movieSearch = { // store all the querys I'm going to make in an object
-            "&primary_release_year=": researchyear,
+            "&primary_release_year=": researchyear, // error for now : the parameter stays undefined in the year query, and replaces the name query when something is typed 
             "&query=": researchmovie,
         }
         // console.log(researchmovie)
@@ -70,6 +70,7 @@ class Movies extends Component {
                     moviesList.push(singleMovie) // push the data in the array created before
                 });
                 console.log(fullMovieSearch)
+                console.log(this.state)
 
                 this.setState({
                     movies: moviesList // set a new state of our previous state movies from moviesList
@@ -107,44 +108,14 @@ class Movies extends Component {
     //     })
     // }
 
-    consoleTest() {
-        console.log(this.state)
-        console.log(fullMovieSearch)
-    }
-
     render() {
         
         return(
-            <div>
-                <div className="searchSection" onLoad={this.consoleTest.bind(this)}>
-                    <p>Name of the movie </p>
-                    <input 
-                        type="text" 
-                        name="researchmovie"
-                        value={this.state.researchmovie}
-                        onChange={this.HandleMovieSearch}
-                        onClick={this.consoleTest} 
-                        placeholder="Search a movie by name"
-                    >
-                    </input>
-                    <p>Year of release </p>
-                    <input 
-                        type="text" 
-                        name="researchyear"
-                        value={this.state.researchyear}
-                        onChange={this.HandleMovieSearch} 
-                        placeholder="Search a movie by the year"
-                    >
-                    </input>
-                </div>
-                {/* <div className="genreSection">
-                    {this.state.genres}
-                </div> */}
-                <div className="allMovies">
-                    {this.state.movies}
-                </div>
-
-            </div>
+            <MoviesContainer 
+                HandleMovieSearch={this.HandleMovieSearch} 
+                state={this.state}
+                consoleTest={this.consoleTest} 
+            />
         )
     }
 }

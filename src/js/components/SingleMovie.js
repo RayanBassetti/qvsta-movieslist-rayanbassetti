@@ -16,8 +16,4 @@ function SingleMovie(props) {
 }
 
 
-
-// How to improve this file : switch to a function based component.
-
-
 export default SingleMovie

@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  width : 100%;
+  height : 100%;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -19,15 +23,16 @@ a {
 }
 
 #root {
+  width : 100%;
+  height : 100%;
 
   .Header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding-top : 10%;
-    padding-left : 20%;
-    padding-right : 20%;
+    padding-top : 3%;
+    margin : 0;
     background-color : black;
 
     h4 {
@@ -37,21 +42,24 @@ a {
 
   .searchSection {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
       p {
-        margin-right : 5%;
+        margin-bottom : 1%;
+        margin-top : 3%;
       }
       input {
         text-align: center;
-        padding : 1%;
+        padding : 2%;
       }
 
   }
 
   .genreSection {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin : 0;
