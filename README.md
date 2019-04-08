@@ -6,8 +6,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # What does it do : 
 
-- Based on TheMovieDb(https://www.themoviedb.org/), this React app displays movies according 
-- to specific terms indicated by the user.
+- Based on TheMovieDb(https://www.themoviedb.org/), this React app displays movies according to specific terms indicated by the user.
+- The user can :
+    - search a movie name
+    - search a year
+    - search a specific movie genre
+    - view the page of a specific movie
 
 - WORK IN PROGRESS.
 
@@ -16,6 +20,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - HTML
 - SASS
 - Jquery / AJAX
+
+# Configuration :
+
+- Heroku
+- Choco (Windows)
+
 
 # My current objectives : 
 - Seperate the research function in a component 
