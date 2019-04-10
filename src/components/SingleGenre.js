@@ -4,7 +4,7 @@ export default function SingleGenre(props) {
     return(
             <option 
                 value={props.genre.id}
-                onClick={props.OnSelect}
+                onClick={event => props.OnSelect(event)}
             >
             {props.genre.name}
             </option>
