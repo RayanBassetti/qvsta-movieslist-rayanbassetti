@@ -12,7 +12,7 @@ class Movies extends React.Component {
         super()
         this.state = {
             researchmovie: "",
-            selectedGenre: "",
+            selectedGenre: "null",
             allMovies: [],
             allGenres: []
         }
@@ -33,10 +33,11 @@ class Movies extends React.Component {
 
     OnSelect(event) {
         console.log(event.target.value)
-        this.setState({
-            selectedGenre: event.target.value
-        })
+        const id = event.target.value
         console.log(this.state.selectedGenre)
+        this.setState({
+            selectedGenre: id
+        })
         const selectedGenreId = this.state.selectedGenre
         this.LaunchSearch(selectedGenreId)
     }
@@ -102,7 +103,7 @@ class Movies extends React.Component {
                     </input>
                     <select 
                         defaultValue="Select a genre" 
-                        onClick={event => this.OnSelect(event)}
+                        onClick={this.OnSelect}
                     >
                         <option value="null">
                             Select a genre
