@@ -3,23 +3,27 @@ import axios from 'axios';
 
 import SingleMovie from './SingleMovie.js';
 import SingleGenre from './SingleGenre.js'
+import FrontPage from './FrontPage.js'
 
 
-const API_KEY = `${process.env.REACT_APP_API_KEY}`
+// const API_KEY = `${process.env.REACT_APP_API_KEY}`
+
+// Problème actuel : selectedGenre reste undefined
 
 class Movies extends React.Component {
     constructor() {
         super()
         this.state = {
-            researchmovie: "",
-            selectedGenre: "null",
+            researchyear: "",
+            researchgenre: "salaud",
             allMovies: [],
             allGenres: []
         }
 
         this.HandleSearch = this.HandleSearch.bind(this)
+        this.HandleSelect = this.HandleSelect.bind(this)
+
         this.LaunchSearch = this.LaunchSearch.bind(this)
-        this.OnSelect = this.OnSelect.bind(this)
     }
 
     HandleSearch(event) {
@@ -31,14 +35,11 @@ class Movies extends React.Component {
         this.LaunchSearch(value)
     }
 
-    OnSelect(event) {
-        console.log(event.target.value)
-        const id = event.target.value
-        console.log(this.state.selectedGenre)
+    HandleSelect(event) {
         this.setState({
-            selectedGenre: id
+            researchgenre: event.target.value
         })
-        const selectedGenreId = this.state.selectedGenre
+        const selectedGenreId = this.state.researchgenre
         this.LaunchSearch(selectedGenreId)
     }
 
@@ -50,14 +51,15 @@ class Movies extends React.Component {
                 })
             }
         })
-        const selectedGenre = this.state.selectedGenre
+        const selectedGenre = this.state.researchgenre
+        const fullURL = `https://api.themoviedb.org/3/discover/movie?api_key=435ab096a795a0a39c4e7bca5f71fd75&sort_by=popularity.desc&primary_release_year=${value}&with_genres=${selectedGenre}`
         axios
-            .post(`https://api.themoviedb.org/3/discover/movie?api_key=435ab096a795a0a39c4e7bca5f71fd75&sort_by=popularity.desc&primary_release_year=${value}&with_genres=28`)
+            .post(`${fullURL}`)
             .then(response => {
                 const results = response.data.results
                 const moviesList = []
                 results.forEach(movie => {
-                    const singleMovie = <SingleMovie key={movie.id} movie={movie} />
+                    const singleMovie = <SingleMovie key={movie.id} movie={movie} state={this.state} />
                     moviesList.push(singleMovie)
                 });
 
@@ -65,6 +67,10 @@ class Movies extends React.Component {
                     allMovies: moviesList
                 })
             })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+              })
     }
     
     componentDidMount() {
@@ -89,30 +95,13 @@ class Movies extends React.Component {
             })
     }
 
-
-
     render() {
         return(
-            <div>
-                <form>
-                    Enter the year
-                    <input 
-                        type="text" 
-                        onChange={this.HandleSearch}
-                    >
-                    </input>
-                    <select 
-                        defaultValue="Select a genre" 
-                        onClick={this.OnSelect}
-                    >
-                        <option value="null">
-                            Select a genre
-                        </option>
-                        {this.state.allGenres}
-                    </select>
-                </form>
-                {this.state.allMovies}
-            </div>
+            <FrontPage 
+                state={this.state}
+                HandleSearch={this.HandleSearch}
+                HandleSelect={this.HandleSelect}
+            />
         )
     }
 }

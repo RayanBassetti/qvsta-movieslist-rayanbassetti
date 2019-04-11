@@ -1,0 +1,23 @@
+.singleMovie {
+    width: 200px;
+    height : 500px;
+    margin : 3%;
+    -webkit-box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
+    -moz-box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
+    box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
+
+    .singleMovieText {
+        padding: 3%;
+
+
+        .singleMovieTextTitle {
+            margin-top : 1%;
+            margin-bottom : 1%;
+        }
+
+        span {
+            padding-bottom : 1%;
+            font-weight : bolder;
+        }
+    }
+}

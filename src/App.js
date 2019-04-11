@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import Movies from './components/Movies.js'
+import React from 'react';
+import Movies from './containers/Movies.js'
+import Header from './containers/Header.js'
 import './App.css';
 
-class App extends Component {
-  render() {
+export default function App() {
     return (
+      <div>  
+      <Header />
       <Movies />
-    );
-  }
+      </div>
+    )
+  
 }
 
-export default App;

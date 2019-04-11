@@ -1,0 +1,13 @@
+.Header {
+    padding : 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color : black;
+    color : white;
+    p {
+        margin : 1%;
+        font-weight: bold;
+    }
+}
