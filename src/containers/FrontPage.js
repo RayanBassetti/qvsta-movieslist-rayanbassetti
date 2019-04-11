@@ -5,7 +5,7 @@ export default function FrontPage(props) {
     return (
         <div className="FrontPage">
             <form>
-                    <p>Select a movie genre</p>
+                    <p>1) Select a movie genre</p>
                     <select 
                         defaultValue="Select a genre"
                         genre="null" 
@@ -19,7 +19,7 @@ export default function FrontPage(props) {
                         </option>
                         {props.state.allGenres}
                     </select>
-                    <p>Enter the min year</p>
+                    <p>2) Enter the min year</p>
                     <input 
                         type="text" 
                         onChange={props.HandleSearch}
@@ -27,7 +27,7 @@ export default function FrontPage(props) {
                         value={props.state.researchyear1}
                     >
                     </input>
-                    <p>Enter the max year</p>
+                    <p>3) Enter the max year</p>
                     <input 
                         type="text" 
                         onChange={props.HandleSearch}
