@@ -4,7 +4,7 @@ import './Header.scss'
 export default function Header() {
     return (
         <div className="Header">
-            <img alt="logo_themoviedb" src=""></img>
+            <img alt="logo_themoviedb" src="../images/themoviedb_logo.png"></img>
             <p>The Movie Db - A React App</p>
         </div>
     )
