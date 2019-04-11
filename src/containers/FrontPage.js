@@ -27,8 +27,9 @@ export default function FrontPage(props) {
                         value={props.state.researchyear}
                     >
                     </input>
+                    <p className="launchSearch" onClick={props.LaunchSearch}>Wait for it...</p>
             </form>
-            <h1>Most popular movies of : {props.state.researchyear}</h1>
+            <h2>20 most popular movies of chosen genre in {props.state.researchyear}</h2>
             <div className="AllMovies">    
                 {props.state.allMovies}
             </div>

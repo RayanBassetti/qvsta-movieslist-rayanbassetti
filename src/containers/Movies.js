@@ -15,14 +15,14 @@ class Movies extends React.Component {
         super()
         this.state = {
             researchyear: "",
-            researchgenre: "salaud",
+            researchgenre: "",
             allMovies: [],
             allGenres: []
         }
 
         this.HandleSearch = this.HandleSearch.bind(this)
         this.HandleSelect = this.HandleSelect.bind(this)
-
+        this.ConfigureSearch = this.ConfigureSearch.bind(this)
         this.LaunchSearch = this.LaunchSearch.bind(this)
     }
 
@@ -32,7 +32,7 @@ class Movies extends React.Component {
         this.setState({
             [name]: value
         })
-        this.LaunchSearch(value)
+        this.ConfigureSearch(value)
     }
 
     HandleSelect(event) {
@@ -40,10 +40,11 @@ class Movies extends React.Component {
             researchgenre: event.target.value
         })
         const selectedGenreId = this.state.researchgenre
-        this.LaunchSearch(selectedGenreId)
+        this.ConfigureSearch(selectedGenreId)
     }
+    
 
-    LaunchSearch(value, selectedGenreId) {
+    ConfigureSearch(value, selectedGenreId) {
         this.state.allGenres.forEach(genre => {
             if (selectedGenreId === genre.id) {
                 this.setState({
@@ -53,6 +54,11 @@ class Movies extends React.Component {
         })
         const selectedGenre = this.state.researchgenre
         const fullURL = `https://api.themoviedb.org/3/discover/movie?api_key=435ab096a795a0a39c4e7bca5f71fd75&sort_by=popularity.desc&primary_release_year=${value}&with_genres=${selectedGenre}`
+        this.LaunchSearch(fullURL)
+    }
+
+    LaunchSearch(fullURL) {
+        
         axios
             .post(`${fullURL}`)
             .then(response => {
@@ -73,23 +79,22 @@ class Movies extends React.Component {
               })
     }
     
-    componentDidMount() {
+    componentDidMount() { // launch of a get at the moment the page is loaded to have the list of movies genres ready in the select form
         axios
             .get(`https://api.themoviedb.org/3/genre/movie/list?api_key=435ab096a795a0a39c4e7bca5f71fd75&language=en-US`)
             .then(response => {
                 const results = response.data.genres
-                const genresList = []
+                const genresList = [] // we create an empty array in which we'll push each genre
                 results.forEach(genre => {
                     const singleGenre = <SingleGenre 
                                             key={genre.id} 
                                             genre={genre}
-                                            onSelect={this.OnSelect} 
                                         />
                     genresList.push(singleGenre)
                 })
 
                 this.setState({
-                    allGenres: genresList
+                    allGenres: genresList // we assign to the allGenres state the array now full
                 })
                 
             })
@@ -101,6 +106,7 @@ class Movies extends React.Component {
                 state={this.state}
                 HandleSearch={this.HandleSearch}
                 HandleSelect={this.HandleSelect}
+                LaunchSearch={this.LaunchSearch}
             />
         )
     }
