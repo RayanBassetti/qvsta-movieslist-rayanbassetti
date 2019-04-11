@@ -10,6 +10,11 @@
         align-items: center;
         flex-direction: column;
 
+        input {
+            padding : 1%;
+            text-align: center;
+        }
+
         .launchSearch {
             cursor : pointer;
             padding : 3%;

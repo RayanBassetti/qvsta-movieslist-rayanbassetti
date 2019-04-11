@@ -19,17 +19,25 @@ export default function FrontPage(props) {
                         </option>
                         {props.state.allGenres}
                     </select>
-                    <p>Enter the year</p>
+                    <p>Enter the min year</p>
                     <input 
                         type="text" 
                         onChange={props.HandleSearch}
-                        name="researchyear"
-                        value={props.state.researchyear}
+                        name="researchyear1"
+                        value={props.state.researchyear1}
+                    >
+                    </input>
+                    <p>Enter the max year</p>
+                    <input 
+                        type="text" 
+                        onChange={props.HandleSearch}
+                        name="researchyear2"
+                        value={props.state.researchyear2}
                     >
                     </input>
                     {/* <p className="launchSearch" onClick={props.LaunchSearch}>Wait for it...</p> */}
             </form>
-            <h2>20 most popular movies of chosen genre in {props.state.researchyear}</h2>
+            <h2>20 most popular movies of chosen genre between {props.state.researchyear1} and {props.state.researchyear2}</h2>
             <div className="AllMovies">    
                 {props.state.allMovies}
             </div>

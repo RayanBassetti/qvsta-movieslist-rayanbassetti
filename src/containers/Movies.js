@@ -14,7 +14,8 @@ class Movies extends React.Component {
     constructor() {
         super()
         this.state = {
-            researchyear: "",
+            researchyear1: "",
+            researchyear2: "",
             researchgenre: "",
             allMovies: [],
             allGenres: []
@@ -32,7 +33,9 @@ class Movies extends React.Component {
         this.setState({
             [name]: value
         })
-        this.ConfigureSearch(value)
+        const researchyear1 = this.state.researchyear1
+        const researchyear2 = this.state.researchyear2
+        this.ConfigureSearch(researchyear1, researchyear2)
     }
 
     HandleSelect(event) {
@@ -44,7 +47,7 @@ class Movies extends React.Component {
     }
     
 
-    ConfigureSearch(value, selectedGenreId) {
+    ConfigureSearch(researchyear1, researchyear2, selectedGenreId) {
         this.state.allGenres.forEach(genre => {
             if (selectedGenreId === genre.id) {
                 this.setState({
@@ -53,7 +56,7 @@ class Movies extends React.Component {
             }
         })
         const selectedGenre = this.state.researchgenre
-        const fullURL = `https://api.themoviedb.org/3/discover/movie?api_key=435ab096a795a0a39c4e7bca5f71fd75&sort_by=popularity.desc&primary_release_year=${value}&with_genres=${selectedGenre}`
+        const fullURL = `https://api.themoviedb.org/3/discover/movie?api_key=435ab096a795a0a39c4e7bca5f71fd75&sort_by=popularity.desc&primary_release_date.gte=${researchyear1}&primary_release_date.lte=${researchyear2}&with_genres=${selectedGenre}`
         this.LaunchSearch(fullURL)
     }
 
