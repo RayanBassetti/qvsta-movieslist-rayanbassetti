@@ -5,7 +5,6 @@ import SingleMovie from './SingleMovie.js';
 import SingleGenre from './SingleGenre.js'
 import FrontPage from './FrontPage.js'
 
-
 // const API_KEY = `${process.env.REACT_APP_API_KEY}`
 
 // Problème actuel : selectedGenre reste undefined
@@ -28,40 +27,35 @@ class Movies extends React.Component {
     }
 
     HandleSearch(event) {
-        console.log(event.target.value)
         const {name, value} = event.target
         this.setState({
             [name]: value
         })
-        const researchyear1 = this.state.researchyear1
-        const researchyear2 = this.state.researchyear2
-        this.ConfigureSearch(researchyear1, researchyear2)
     }
 
     HandleSelect(event) {
         this.setState({
             researchgenre: event.target.value
         })
-        const selectedGenreId = this.state.researchgenre
-        this.ConfigureSearch(selectedGenreId)
     }
     
 
-    ConfigureSearch(researchyear1, researchyear2, selectedGenreId) {
-        this.state.allGenres.forEach(genre => {
-            if (selectedGenreId === genre.id) {
-                this.setState({
-                    selectedGenre: selectedGenreId
-                })
-            }
-        })
-        const selectedGenre = this.state.researchgenre
-        const fullURL = `https://api.themoviedb.org/3/discover/movie?api_key=435ab096a795a0a39c4e7bca5f71fd75&sort_by=popularity.desc&primary_release_date.gte=${researchyear1}&primary_release_date.lte=${researchyear2}&with_genres=${selectedGenre}`
+    ConfigureSearch() {
+        const myParams = { // since we have a lot of parameters that we're going to pass in the URL, I did an object
+            "researchyear1": this.state.researchyear1,
+            "researchyear2": this.state.researchyear2,
+            "researchgenre": this.state.researchgenre
+
+        }
+
+        console.log(this.state)
+        const fullURL = `https://api.themoviedb.org/3/discover/movie?api_key=435ab096a795a0a39c4e7bca5f71fd75&sort_by=popularity.desc&primary_release_date.gte=${myParams.researchyear1}&primary_release_date.lte=${myParams.researchyear2}&with_genres=${myParams.researchgenre}`
+        console.log(fullURL)
         this.LaunchSearch(fullURL)
+        
     }
 
     LaunchSearch(fullURL) {
-        
         axios
             .post(`${fullURL}`)
             .then(response => {
@@ -82,7 +76,7 @@ class Movies extends React.Component {
               })
     }
     
-    componentDidMount() { // launch of a get at the moment the page is loaded to have the list of movies genres ready in the select form
+    componentDidMount() { // launch of a GET at the moment the page is loaded to have the list of movies genres ready in the select form
         axios
             .get(`https://api.themoviedb.org/3/genre/movie/list?api_key=435ab096a795a0a39c4e7bca5f71fd75&language=en-US`)
             .then(response => {
@@ -110,6 +104,7 @@ class Movies extends React.Component {
                 HandleSearch={this.HandleSearch}
                 HandleSelect={this.HandleSelect}
                 LaunchSearch={this.LaunchSearch}
+                ConfigureSearch={this.ConfigureSearch}
             />
         )
     }
