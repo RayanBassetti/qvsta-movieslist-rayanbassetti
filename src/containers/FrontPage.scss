@@ -2,6 +2,8 @@
 
     h2 {
         text-align: center;
+        margin-right : 20%;
+        margin-left : 20%;
     }
 
     form {
@@ -16,8 +18,10 @@
         }
 
         .launchSearch {
+            margin-top : 3%;
+            font-size : 1.2em;
             cursor : pointer;
-            padding : 3%;
+            padding : 1%;
             background-color : orange;
             color : white;      
             -webkit-box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
