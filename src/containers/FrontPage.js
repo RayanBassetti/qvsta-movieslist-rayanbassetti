@@ -24,7 +24,7 @@ export default function FrontPage(props) {
                         type="text" 
                         onChange={props.HandleSearch}
                         name="researchyear1"
-                        value={props.state.researchyear1}
+                        defaultValue={props.state.researchyear1}
                     >
                     </input>
                     <p>3) Enter the max year</p>
@@ -32,12 +32,13 @@ export default function FrontPage(props) {
                         type="text" 
                         onChange={props.HandleSearch}
                         name="researchyear2"
-                        value={props.state.researchyear2}
+                        defaultValue={props.state.researchyear2}
                     >
                     </input>
-                    {/* <p className="launchSearch" onClick={props.LaunchSearch}>Wait for it...</p> */}
+                    <p className="launchSearch" onClick={props.ConfigureSearch}>Search</p> 
+                    {/* Yes, I have no shame, I did a button with a p tag, sue me. */}
             </form>
-            <h2>20 most popular movies of chosen genre between {props.state.researchyear1} and {props.state.researchyear2}</h2>
+            <h2>20 most popular movies of chosen movie genre, between {props.state.researchyear1} and {props.state.researchyear2}</h2>
             <div className="AllMovies">    
                 {props.state.allMovies}
             </div>
