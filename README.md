@@ -1,5 +1,42 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## DEMO AVAILABLE HERE : 
+
+- https://qvsta-movieslist-rayanbassetti.herokuapp.com/
+
+# What does it do : 
+
+- Based on TheMovieDb(https://www.themoviedb.org/), this React app displays movies according to specific terms indicated by the user.
+- The user can :
+    - search a movie between 2 specific years : DONE ✅
+    - search a specific movie genre : DONE ✅
+    - view the page of a specific movie : TO-DO ❌
+
+- WORK IN PROGRESS.
+
+# What is used : 
+
+- HTML
+- SASS
+- AXIOS
+
+# Configuration :
+
+- Heroku
+- Choco (Windows)
+
+#Differences between develop/master and axios : 
+
+At first i did all my work on develop, and pushed on master (which would automaticaly be deployed on Heroku).
+However, the JS library I was using to fetch the data, Jquery, was too limited for the requests I wanted to make, so I created the branch "axios", with uses the said library, and has been way better for me.
+
+
+# My current objectives : 
+
+- Organise my files in container and components
+- Comment as much as possible what I'm doing
+- Work on the UI
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -37,32 +74,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify

@@ -1,0 +1,39 @@
+.FrontPage {
+
+    h2 {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        input {
+            padding : 1%;
+            text-align: center;
+        }
+
+        .launchSearch {
+            cursor : pointer;
+            padding : 3%;
+            background-color : orange;
+            color : white;      
+            -webkit-box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
+            -moz-box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
+            box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
+
+        }
+    }
+    
+    
+    .AllMovies {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+}
