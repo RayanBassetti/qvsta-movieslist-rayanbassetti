@@ -5,9 +5,8 @@ import SingleMovie from './SingleMovie.js';
 import SingleGenre from './SingleGenre.js'
 import FrontPage from './FrontPage.js'
 
-// const API_KEY = `${process.env.REACT_APP_API_KEY}`
+const API_KEY = process.env.REACT_APP_API_KEY
 
-// Problème actuel : selectedGenre reste undefined
 
 class Movies extends React.Component {
     constructor() {
@@ -20,20 +19,20 @@ class Movies extends React.Component {
             allGenres: []
         }
 
-        this.HandleSearch = this.HandleSearch.bind(this)
+        this.HandleSearch = this.HandleSearch.bind(this) // binding the function allows me to this setState in it
         this.HandleSelect = this.HandleSelect.bind(this)
         this.ConfigureSearch = this.ConfigureSearch.bind(this)
         this.LaunchSearch = this.LaunchSearch.bind(this)
     }
 
-    HandleSearch(event) {
+    HandleSearch(event) { // gets the 2 years selected by the user
         const {name, value} = event.target
         this.setState({
             [name]: value
         })
     }
 
-    HandleSelect(event) {
+    HandleSelect(event) { // gets the movie genre selected by the user
         this.setState({
             researchgenre: event.target.value
         })
@@ -44,8 +43,7 @@ class Movies extends React.Component {
         const myParams = { // since we have a lot of parameters that we're going to pass in the URL, I did an object
             "researchyear1": this.state.researchyear1,
             "researchyear2": this.state.researchyear2,
-            "researchgenre": this.state.researchgenre
-
+            "researchgenre": this.state.researchgenre,
         }
 
         console.log(this.state)
@@ -55,7 +53,7 @@ class Movies extends React.Component {
         
     }
 
-    LaunchSearch(fullURL) {
+    LaunchSearch(fullURL) { // post request to the API, to show the movies according to the user's inputs
         axios
             .post(`${fullURL}`)
             .then(response => {

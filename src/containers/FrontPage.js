@@ -35,8 +35,8 @@ export default function FrontPage(props) {
                         defaultValue={props.state.researchyear2}
                     >
                     </input>
-                    <input type="button" className="launchSearch" onClick={props.ConfigureSearch} value="Launch the search !"></input> 
-                    {/* Yes, I have no shame, I did a button with a p tag, sue me. */}
+                    <input type="button" className="launchSearch" onTouch={props.ConfigureSearch} onClick={props.ConfigureSearch} value="Launch the search !"></input> 
+                    
             </form>
             <h2>20 most popular movies of chosen movie genre, between {props.state.researchyear1} and {props.state.researchyear2}</h2>
             <div className="AllMovies">    
