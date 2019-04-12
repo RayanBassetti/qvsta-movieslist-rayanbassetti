@@ -8,9 +8,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Based on TheMovieDb(https://www.themoviedb.org/), this React app displays movies according to specific terms indicated by the user.
 - The user can :
-    - search a year : DONE
-    - search a specific movie genre : DONE (with a delay, to correct)
-    - view the page of a specific movie : TO-DO
+    - search a movie between 2 specific years : DONE ✅
+    - search a specific movie genre : DONE ✅
+    - view the page of a specific movie : TO-DO ❌
 
 - WORK IN PROGRESS.
 
@@ -24,6 +24,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 - Heroku
 - Choco (Windows)
+
+#Differences between develop/master and axios : 
+
+At first i did all my work on develop, and pushed on master (which would automaticaly be deployed on Heroku).
+However, the JS library I was using to fetch the data, Jquery, was too limited for the requests I wanted to make, so I created the branch "axios", with uses the said library, and has been way better for me.
 
 
 # My current objectives : 
