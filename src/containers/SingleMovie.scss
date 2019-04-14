@@ -1,6 +1,6 @@
 .singleMovie {
-    width: 200px;
-    height : 500px;
+    width: 185px;
+    height : auto;
     margin : 3%;
     -webkit-box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
     -moz-box-shadow: -4px 21px 24px 3px rgba(0,0,0,0.25);
@@ -8,6 +8,14 @@
 
     .singleMovieText {
         padding: 3%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        p {
+            margin : 5px;
+        }
 
 
         .singleMovieTextTitle {
@@ -19,5 +27,16 @@
             padding-bottom : 1%;
             font-weight : bolder;
         }
+
+        a {
+            cursor : pointer;
+            text-transform: uppercase;
+            background-color : white;
+            color : orange;
+            text-decoration: none;
+            margin : 2%;
+        }
+
+
     }
 }
