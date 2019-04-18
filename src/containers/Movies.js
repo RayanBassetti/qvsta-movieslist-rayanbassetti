@@ -45,6 +45,10 @@ class Movies extends React.Component {
         })
     }
 
+    HandleClick(event) {
+        console.log(event.target.value)
+    }
+
     ConfigureSearch() {
         const myParams = { // since we have a lot of parameters that we're going to pass in the URL, I did an object
             "baseURL": "https://api.themoviedb.org/3/discover/movie?",
@@ -76,11 +80,13 @@ class Movies extends React.Component {
                 const results = response.data.results
                 const moviesList = []
                 results.forEach(movie => {
-                    const singleMovie = <SingleMovie 
-                                            key={movie.id} 
-                                            movie={movie} 
-                                            state={this.state} />
-                    moviesList.push(singleMovie)
+                    if (movie.popularity > 2) { // if there has been more than 2 thousands people voting for the movie
+                        const singleMovie = <SingleMovie 
+                        key={movie.id} 
+                        movie={movie} 
+                        state={this.state} />
+                        moviesList.push(singleMovie)
+                    }
                 });
 
                 if (moviesList.length === 0) {
@@ -125,7 +131,7 @@ class Movies extends React.Component {
                 state={this.state}
                 HandleSearch={this.HandleSearch}
                 HandleSelect={this.HandleSelect}
-                ViewMoviePage={this.ViewMoviePage}
+                HandleClick={this.HandleClick}
                 LaunchSearch={this.LaunchSearch}
                 ConfigureSearch={this.ConfigureSearch}
             />

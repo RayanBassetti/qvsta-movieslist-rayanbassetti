@@ -10,7 +10,7 @@ export default function SingleMovie(props) {
                 <h2 className="singleMovieTextTitle">{props.movie.title}{props.movie.original_name}</h2> {/*we display title and original_name, since some movies have one and some the other*/ }
                 <p><span className="span">Year :</span> {props.movie.release_date}{props.movie.first_air_date}</p> {/*same with the release date*/ }
                 <p><span className="span">Rating :</span> {props.movie.vote_average}</p>
-                <a target="_blank" href="#">View</a>
+                <a target="_blank" onClick={props.HandleClick}>View</a>
             </div>
         </div>
     )
